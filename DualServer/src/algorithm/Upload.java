@@ -29,6 +29,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class Upload extends HttpServlet {
+	
+		
 
     File file;
     final String filepath = "D:\\uploads\\";

@@ -22,10 +22,22 @@
             });
         </script>
         <%
-            if (request.getParameter("msg") != null) {
+        if (request.getParameter("approved") != null) {
+            %>
+            
+            
+            <script>alert('User Approved Successfully');</script>
+            <%        
+        }
+        else if (request.getParameter("msg") != null) {
         %>
+        
+        
         <script>alert('Login Successfully');</script>
-        <%            }
+        <%        
+        
+        
+        }
         %>
         <!-- grid-slider -->
         <script type="text/javascript" src="js/jquery.mousewheel.js"></script>

@@ -56,7 +56,7 @@ public class CiperText {
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] encryptedText1 = encryptedString.getBytes(UNICODE_FORMAT);
             byte[] encryptedText = Base64.decodeBase64(encryptedText1);
-            byte[] plainText = cipher.doFinal(encryptedText);
+            byte[] pT = cipher.doFinal(encryptedText);
         } catch (Exception e) {
             e.printStackTrace();
         }

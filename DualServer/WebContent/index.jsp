@@ -53,10 +53,10 @@
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
                         <li class="active"><a href="index.jsp">Home</a></li>
-                        <li><a href="user.jsp">User</a></li>
-                        <li><a href="server1.jsp">Server 1</a></li>
-                        <li><a href="server2.jsp">Server 2</a></li>
-                        <li><a href="reg.jsp">Registration</a></li>
+                        <li><a href="user.jsp">Data Owner</a></li>
+                        <li><a href="server1.jsp">Assistant Server</a></li>
+                        <li><a href="server2.jsp">Test Server</a></li>
+                        <li><a href="dataReceiver.jsp">Data Receiver</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>
                 </div>

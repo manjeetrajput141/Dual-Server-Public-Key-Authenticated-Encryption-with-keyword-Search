@@ -109,12 +109,12 @@
             <div class="container">
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
-                    <ul class="nav">
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="user.jsp">User</a></li>
-                        <li class="active"><a href="server1.jsp">Server 1</a></li>
-                        <li><a href="server2.jsp">Server 2</a></li>
-                        <li><a href="reg.jsp">Registration</a></li>
+                     <ul class="nav">
+                        <li class="active"><a href="index.jsp">Home</a></li>
+                        <li><a href="user.jsp">Data Owner</a></li>
+                        <li><a href="server1.jsp">Assistant Server</a></li>
+                        <li><a href="server2.jsp">Test Server</a></li>
+                        <li><a href="dataReceiver.jsp">Data Receiver</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>
                 </div>
@@ -125,7 +125,7 @@
             <div class="container">
                 <!-- start content-top -->
                 <center><br>
-                    <img src="images/ser1.png"  height="240" width="600">
+                    <img src="images/assistant_login.png"  height="240" width="600">
                 </center>
                 <br><center><form action="login.jsp" method="get"> 
                         <input type="text" class="inputs" name="name" required="" placeholder="Your Name" /><br> 

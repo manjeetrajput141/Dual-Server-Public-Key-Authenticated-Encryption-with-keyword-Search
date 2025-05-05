@@ -16,12 +16,13 @@ public class DbConnection {
     {
         Connection con = null;
         try{
-             Class.forName("com.mysql.jdbc.Driver");
-             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dual_server", "uname", "upass");
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dualserver", "root", "Manjeet@123#");
         }
         catch(Exception e)
         {
             e.printStackTrace();
+            System.out.println("Eroor occur in Get Connnection");
         }
         return con;
     }

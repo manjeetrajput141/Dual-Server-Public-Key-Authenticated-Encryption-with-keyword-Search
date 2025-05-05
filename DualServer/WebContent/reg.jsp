@@ -107,7 +107,7 @@
         <div class="header-bottom">
             <div class="container">
                 <div class="header-bottom_left">
-                    <h3><font style="font-family: cursive; color: #F7FDFF ">Dual-Server Public-Key Encryption With Keyword Search for Secure Cloud Storage</font></h3><br>
+                    <h3><font style="font-family: cursive; color: #F7FDFF ">Dual-Server Public-Key Authenticated Encryption With Keyword Search for Secure Cloud Storage</font></h3><br>
                 </div><br>
                 <div class="social">	
                     <ul>	
@@ -127,12 +127,12 @@
             <div class="container">
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
-                    <ul class="nav">
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="user.jsp">User</a></li>
-                        <li><a href="server1.jsp">Server 1</a></li>
-                        <li><a href="server2.jsp">Server 2</a></li>
-                        <li class="active"><a href="reg.jsp">Registration</a></li>
+                     <ul class="nav">
+                        <li class="active"><a href="index.jsp">Home</a></li>
+                        <li><a href="user.jsp">Data Owner</a></li>
+                        <li><a href="server1.jsp">Assistant Server</a></li>
+                        <li><a href="server2.jsp">Test Server</a></li>
+                        <li><a href="dataReceiver.jsp">Data Receiver</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>
                 </div>
@@ -144,6 +144,13 @@
                 <!-- start content-top -->
                 <br><br><br><center><h2 style="font-size: 26px; color: #552200; font-family: cursive">Registration</h2>
                     <br><form action="login.jsp" method="get" name="form"> 
+                         <select class="inputss" required="" name="role" >
+                            <option value="select">Role</option>
+                            <option value="owner">Owner</option>
+                            <option value="receiver">Receiver</option>
+                        </select>&nbsp;&nbsp;&nbsp;
+                        <br>
+                        
                         <input type="text" class="inputs" name="name" required="" placeholder="Your Name" />&nbsp;&nbsp;&nbsp; 
                         <input type="password" class="inputs" name="pass" required="" placeholder="Password" /><br> 
                         <input type="email" class="inputs" name="email" required="" placeholder="e-mail" />&nbsp;&nbsp;&nbsp;

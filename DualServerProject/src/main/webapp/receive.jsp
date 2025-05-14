@@ -1,3 +1,10 @@
+<%@page import="java.security.SecureRandom"%>
+<%@page import="java.util.Random"%>
+<%@page import="com.db.DbConnection"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -58,12 +65,12 @@
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
-                        <li class="active"><a href="receiverHome.jsp">Data Receiver Home</a></li>
+                        <li class="active"><a href="receiverHome">Data Receiver Home</a></li>
                         <li><a href="receive.jsp">Download File</a></li>
-                        <li><a href="file_de.jsp">My Files</a></li>
-                        <li><a href="#">Keyword Index</a></li>
-                        <li><a href="#">File Transaction</a></li>
-
+                        <li><a href="file_de.jsp">Send File</a></li>
+                        <li><a href="receive.jsp">Receive file</a></li>
+                        <li><a href="search.jsp">Search file</a></li>
+                        <li><a href="down.jsp">MyFile </a></li>
                         <li><a href="index.jsp">logout</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>
@@ -75,9 +82,63 @@
             <div class="container">
                 <!-- start content-top -->
                 <center><br><br>
-                    <img src="images/file_share.jpg"  height="400" width="900">
+                    <img src="images/file_share1.jpg"  height="400" width="900">
                 </center>
 
+				<center>
+				<form action="Download" method="get" enctype="multipart/form-data">
+
+					<select class="inputss" name="receiver">
+						<%
+						System.out.println("hi");
+						String user = (String) session.getAttribute("sssname");
+						System.out.println("hi" + user);
+						Connection con = null;
+						Statement st = null;
+						ResultSet rs = null;
+						try {
+							con = DbConnection.getConnection();
+							st = con.createStatement();
+							rs = st.executeQuery("select * from reg where name!='" + user + "'");
+							while (rs.next()) {
+								String name = rs.getString("name");
+						%>
+						<option value="<%=name%>"><%=name%></option>
+
+						<%
+						}
+						} catch (Exception ex) {
+						ex.printStackTrace();
+						}
+						%>
+					</select><br> 
+					<input type="text" class="inputs" name="keyword"
+						required="" placeholder="Enter File Keyword" /><br>
+					<%
+					Random RANDOM = new SecureRandom();
+					int PASSWORD_LENGTH = 25;
+					String letters = "qwertyuioplkjhgfdsazxcvbnm123456789ASDFGHJKLZXCVBNMQWERTYUIOP";
+					String key = "";
+					for (int i = 0; i < PASSWORD_LENGTH; i++) {
+						int index = (int) (RANDOM.nextDouble() * letters.length());
+						key += letters.substring(index, index + 1);
+					}
+					%>
+					
+					<!-- Just For Checking -->
+					 <input type="text" class="inputs" name="buplic" readonly=""
+						Value="<%=key%>" />
+						
+						
+						<!-- <input type="text" class="inputs"
+						name="myfile" required="" value="myfile" /> -->
+						<br> 
+					
+						<br>
+				    <input type="Submit"
+						value="Share" class="button">
+				</form>
+			</center>
                 <!-- end content-top -->
             </div>
             <div class="container">

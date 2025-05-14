@@ -22,8 +22,26 @@
             });
         </script>
         <%
-            if (request.getParameter("msg") != null) {
-        %>
+        String s=(String)request.getParameter("dataUpload");
+        if(s!=null && s.equals(1)){
+        	
+        	%>
+            <script>alert('File Uupload Successfully');</script>
+            <%  
+        }
+        else if(s!=null  && s.equals(0)){
+        	
+        	%>
+            <script>alert('File Not Uploaded');</script>
+            <%  
+        }
+        
+        else if (request.getParameter("msg") != null) {
+      
+            	
+            	
+            	
+            	%>
         <script>alert('Login Successfully');</script>
         <%            }
         %>
@@ -58,12 +76,12 @@
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
-                        <li class="active"><a href="uhome.jsp">User Home</a></li>
-                        <li><a href="share.jsp">Share File</a></li>
-                        <li><a href="file_de.jsp">Send File</a></li>
-                        <li><a href="receive.jsp">Receive file</a></li>
-                        <li><a href="search.jsp">Search file</a></li>
-                        <li><a href="down.jsp">Download</a></li>
+                        <li class="active"><a href="ownerHome.jsp">Data Owner Home</a></li>
+                        <li><a href="fileUpload.jsp">File Upload</a></li>
+                        <li><a href="file_de.jsp">My Files</a></li>
+                        <li><a href="#">Keyword Index</a></li>
+                        <li><a href="#">File Transaction</a></li>
+
                         <li><a href="index.jsp">logout</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>

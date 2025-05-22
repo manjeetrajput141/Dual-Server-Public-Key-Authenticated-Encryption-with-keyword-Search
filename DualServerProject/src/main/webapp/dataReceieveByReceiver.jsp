@@ -25,18 +25,28 @@
 	});
 </script>
 <%
-            if (request.getParameter("msg") != null) {
-        %>
+if (request.getParameter("msg") != null) {
+%>
 <script>
 	alert('Login Successfully');
 </script>
-<%            }
-        %>
+<%
+}
+%>
 <!-- grid-slider -->
 <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="js/jquery.contentcarousel.js"></script>
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <!-- //grid-slider -->
+<style type="text/css">
+.centered-box {
+  border: 2px solid #000;
+  width: 300px;
+  padding: 20px;
+  margin: 0 auto; /* centers horizontally */
+}
+
+</style>
 </head>
 <body>
 	<div class="header-bottom">
@@ -88,18 +98,23 @@
 		<div class="container">
 			<!-- start content-top -->
 			<center>
-				<br>
-				<br> <img src="images/file_share1.jpg" height="400" width="900">
+				<br> <br>
+				<!-- <img src="images/file_share1.jpg" height="400" width="900"> -->
 			</center>
 			<div>
-				<card> <cardbody>
-				<h1>Document Information</h1>
-				<p>
+				<card class="text-center"> <cardbody class="text-center">
 
-					<%
-                      request.getParameter("data");
-                    
-            	%>
+				<h1>Document Information</h1>
+				<br>
+				<hr>
+				<p >
+				<div class="centered-box"style="border: 2px solid #333; padding: 20px; width: 300px;">
+					<h4>${data}</h4>
+				</div>
+
+
+
+
 
 				</p>
 
@@ -122,7 +137,7 @@
 		<div class="container">
 			<div class="copy">
 				<p>
-					© 2017 All right received <a href="#" target="_blank">/a>
+					© 2017 All right received <a href="#" target="_blank">/a> 
 				</p>
 			</div>
 			<div class="social">

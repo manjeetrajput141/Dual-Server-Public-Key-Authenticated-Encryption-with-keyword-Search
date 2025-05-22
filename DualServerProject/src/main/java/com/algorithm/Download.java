@@ -6,6 +6,7 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,16 +34,15 @@ public class Download extends HttpServlet {
     	
     	
     	try {
-    	  KeyPair keyPair = RSAEncryption.generateKeyPair();
-          PublicKey publicKey = keyPair.getPublic();
-          PrivateKey privateKey = keyPair.getPrivate();
+    	  
           
-          String documentInfo = SearchableEncryption.searchDocument(key, privateKey);
+          String documentInfo = SearchableEncryption.searchDocument(key);
           request.setAttribute("data", documentInfo);
           System.out.println("Data  is "+documentInfo);
-          response.sendRedirect("dataReceieveByReceiver.jsp?dataUpload=upload");
+       
           
-          
+          RequestDispatcher dispatcher = request.getRequestDispatcher("dataReceieveByReceiver.jsp");
+          dispatcher.forward(request, response);
     	}
     	catch (Exception e) {
     		

@@ -59,7 +59,7 @@ public class Upload extends HttpServlet {
           PublicKey publicKey = keyPair.getPublic();
           PrivateKey privateKey = keyPair.getPrivate();
           
-          SearchableEncryption.storeDocument(fileData, key, publicKey);
+          SearchableEncryption.storeDocument(fileData, key, publicKey,privateKey);
           response.sendRedirect("ownerHome.jsp?dataUpload=1");
           
           

@@ -19,9 +19,10 @@
         System.out.println("After Getting Connection");
         st = con.createStatement();
         System.out.println(request.getParameter("name"));
+        String name=request.getParameter("name");
        
                 try {
-                     st.executeUpdate("update reg set status='Approved' where name='varsha'");
+                     st.executeUpdate("update reg set status='Approved' where name='"+name+"'");
                    
                 } catch (Exception ex) {
                     ex.printStackTrace();

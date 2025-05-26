@@ -136,7 +136,7 @@
 					
 						<br>
 				    <input type="Submit"
-						value="Share" class="button">
+						value="Download" class="button">
 				</form>
 			</center>
                 <!-- end content-top -->

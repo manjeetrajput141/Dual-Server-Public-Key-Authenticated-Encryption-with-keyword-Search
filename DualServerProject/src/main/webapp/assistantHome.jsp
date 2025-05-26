@@ -71,7 +71,7 @@
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
                         <li><a href="assistantHome.jsp">Assistant Server</a></li>
-					<li><a href="file_de1.jsp">File Details</a></li>
+					<li><a href="fileDetails.jsp">File Details</a></li>
 					<li class="active"><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="req1.jsp">User Request</a></li>
 					<li><a href="down1.jsp">Download Details</a></li>

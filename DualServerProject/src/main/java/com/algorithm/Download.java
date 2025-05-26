@@ -39,7 +39,7 @@ public class Download extends HttpServlet {
           String documentInfo = SearchableEncryption.searchDocument(key);
           request.setAttribute("data", documentInfo);
           System.out.println("Data  is "+documentInfo);
-       
+          
           
           RequestDispatcher dispatcher = request.getRequestDispatcher("dataReceieveByReceiver.jsp");
           dispatcher.forward(request, response);

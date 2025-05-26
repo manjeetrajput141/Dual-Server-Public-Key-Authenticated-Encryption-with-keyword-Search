@@ -78,7 +78,7 @@
                     <ul class="nav">
                         <li class="active"><a href="ownerHome.jsp">Data Owner Home</a></li>
                         <li><a href="fileUpload.jsp">File Upload</a></li>
-                        <li><a href="file_de.jsp">My Files</a></li>
+                        <li><a href="allFile.jsp">My Files</a></li>
                         <li><a href="#">Keyword Index</a></li>
                         <li><a href="#">File Transaction</a></li>
 

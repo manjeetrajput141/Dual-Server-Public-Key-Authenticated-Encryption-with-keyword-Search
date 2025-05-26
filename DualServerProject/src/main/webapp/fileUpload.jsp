@@ -156,10 +156,11 @@ if (request.getParameter("msg") != null) {
 			<center>
 				<form action="Upload" method="get" enctype="multipart/form-data">
 
-					<select class="inputss" name="receiver">
+					<select class="inputss" name="receiverName">
 						<%
 						System.out.println("hi");
 						String user = (String) session.getAttribute("sssname");
+								
 						System.out.println("hi" + user);
 						Connection con = null;
 						Statement st = null;
@@ -171,6 +172,7 @@ if (request.getParameter("msg") != null) {
 							while (rs.next()) {
 								String name = rs.getString("name");
 						%>
+						
 						<option value="<%=name%>"><%=name%></option>
 
 						<%
@@ -180,6 +182,7 @@ if (request.getParameter("msg") != null) {
 						}
 						%>
 					</select><br> 
+					<input type="hidden" value=<%=user %> name="owner" />
 					<input type="text" class="inputs" name="keyword"
 						required="" placeholder="File Keyword" /><br>
 					<%

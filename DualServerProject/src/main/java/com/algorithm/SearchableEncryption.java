@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.security.PrivateKey;
 import java.util.Base64;
 import java.security.KeyFactory;
@@ -22,19 +23,24 @@ public class SearchableEncryption {
 	private static Map<String, String> db = new HashMap<>();
 
 	// Here Encrypt data and store in map/db
-	public static void storeDocument(String document, String keyword, PublicKey publicKey, PrivateKey privateKey)
+	public static void storeDocument(String document, String keyword, PublicKey publicKey, PrivateKey privateKey,String receiver)
 			throws Exception {
 		String encryptedDocument = RSAEncryption.encrypt(document, publicKey);
 		String keywordHash = hashKeyword(keyword); // Hash the keyword
 		String convertPKey=privateKeyToString(privateKey);
 		System.out.println(convertPKey);
 		System.out.println(convertPKey.length());
+		int status=0;
 		try {
 
 			Connection con = DbConnection.getConnection();
 			Statement st = con.createStatement();
-			String query = "insert into cloudData(dataKey,dataInfo,privateKey) values('" + keywordHash + "','"
-					+ encryptedDocument + "','" + convertPKey + "')";
+			Random r=new Random();
+			int randomID=r.nextInt(1,999);
+			
+			String query = "insert into cloudData(dataID,dataKey,dataInfo,privateKey,receiverName,status,testServerApproval) values('"+randomID+"','" + keywordHash + "','"
+					+ encryptedDocument + "','" + convertPKey + "','"+receiver+"','Approval Pending','"+status+"')";
+			String q="insert into testServer(dataID,privateKey,receiverName,status) value('"+randomID+"','"+privateKey+"','"+receiver+"','Test Server Approval Pending')";
 			st.execute(query);
 		} catch (Exception e) {
 
@@ -65,15 +71,33 @@ public class SearchableEncryption {
         System.out.println("Keyword HashKey is :"+keywordHash);
         String query="select * from cloudData where dataKey='"+keywordHash+"'";
 		ResultSet rs = st.executeQuery(query);
+		
         //Select Query with Keyword 
 		String encryptedData;
 		//System.out.println("Akkkkk  :   "+rs.getString(1));
         if(rs.next()) {
+        	if(rs.getBoolean(7)) {
         	encryptedData=(String)rs.getString(3);
         	String privateKey=(String)rs.getString(4);
         	System.out.println("Document Search in db: "+encryptedData);
-        	
+		
+			try {
+				con = DbConnection.getConnection();
+				st = con.createStatement();
+				 int i=st.executeUpdate("update cloudData set testServerApproval='"+0+"' where testServerApproval='"+1+"'");
+				 st.executeUpdate("delete * from testServerRequest where status='Approved'");
+				
+		
+		} catch (Exception ex) {
+		ex.printStackTrace();
+		}
+
         	return RSAEncryption.decrypt(encryptedData,stringToPrivateKey(privateKey) );
+        	}
+        	else {
+        		
+        		return "Approval is Pending by Test Server";
+        	}
         }
 			
 //			  if(encryptedData.equals(

@@ -49,6 +49,8 @@ public class Upload extends HttpServlet {
     	
     	String key=(String)request.getParameter("keyword");
     	String fileData = request.getParameter("fileData");
+    	String receiver=request.getParameter("receiverName");
+    	String owner=request.getParameter("owner");
     	System.out.println("Key is "+key);
     	System.out.println("Data  is "+fileData);
     	
@@ -58,8 +60,27 @@ public class Upload extends HttpServlet {
     	  KeyPair keyPair = RSAEncryption.generateKeyPair();
           PublicKey publicKey = keyPair.getPublic();
           PrivateKey privateKey = keyPair.getPrivate();
-          
-          SearchableEncryption.storeDocument(fileData, key, publicKey,privateKey);
+          try {
+        	  Connection con = null;
+        	    Statement st = null;
+        	    ResultSet rs = null;
+        	    con = DbConnection.getConnection();
+                System.out.println("After Getting Connection");
+                st = con.createStatement();
+                
+               
+                        try {
+                             st.execute("insert into allfile (owner,receiver,filestatus) value ('"+owner+"','"+receiver+"','Upload Pending')");
+                           
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+        	  
+          }catch (Exception e) {
+			// TODO: handle exception
+        	  e.printStackTrace();
+		}
+          SearchableEncryption.storeDocument(fileData, key, publicKey,privateKey,receiver);
           response.sendRedirect("ownerHome.jsp?dataUpload=1");
           
           

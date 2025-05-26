@@ -66,7 +66,7 @@
 				<a class="toggleMenu" href="#">Menu</a>
 				<ul class="nav">
 					<li><a href="assistantHome.jsp">Assistant Server</a></li>
-					<li><a href="file_de1.jsp">File Details</a></li>
+					<li><a href="fileDetails.jsp">File Details</a></li>
 					<li class="active"><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="req1.jsp">User Request</a></li>
 					<li><a href="down1.jsp">Download Details</a></li>
@@ -120,6 +120,7 @@
 							rs = st.executeQuery("select * from reg");
 							while (rs.next()) {
 						%>
+						<form method="get" action="approve.jsp">
 						<td  style="font-size: 16px"><%=rs.getString("name")%></td>
 						<td style="font-size: 16px"><%=rs.getString("email")%></td>
 						<td style="font-size: 16px"><%=rs.getString("dob")%></td>
@@ -129,8 +130,9 @@
                         
 						<td style="font-size: 16px"><%=rs.getString("status")%></td>
 
-						<td style="font-size: 16px"><button type="submit"
+						<td style="font-size: 16px"><button type="submit" 
 								class="primary">Approve</button></td>
+								</form>
 					</tr>
 					
 					<%

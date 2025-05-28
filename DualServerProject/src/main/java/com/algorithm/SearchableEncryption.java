@@ -75,8 +75,10 @@ public class SearchableEncryption {
         //Select Query with Keyword 
 		String encryptedData;
 		//System.out.println("Akkkkk  :   "+rs.getString(1));
+		
         if(rs.next()) {
-        	if(rs.getBoolean(7)) {
+        	System.out.println((Integer)rs.getInt(7));
+        	if(1==(Integer)rs.getInt(7)) {
         	encryptedData=(String)rs.getString(3);
         	String privateKey=(String)rs.getString(4);
         	System.out.println("Document Search in db: "+encryptedData);

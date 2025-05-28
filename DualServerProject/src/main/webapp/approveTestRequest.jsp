@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.db.DbConnection"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
@@ -8,11 +9,17 @@
 <%
 						Connection con = null;
 						Statement st = null;
+						PreparedStatement ps=null;
 						ResultSet rs = null;
 						try {
 							con = DbConnection.getConnection();
 							st = con.createStatement();
-							 int i=st.executeUpdate("update cloudData set testServerApproval='"+1+"' where dataID='"+request.getParameter("fileId")+"'");
+							String query="update cloudData set testServerApproval=? where dataID=?";
+						//	 int i=st.executeUpdate("update cloudData set testServerApproval='"+1+"' where dataID='"+request.getParameter("fileId")+"'");
+							ps=con.prepareStatement(query);
+							ps.setInt(1,1);     
+							ps.setString(2,request.getParameter("fileId")); 
+							 ps.executeUpdate();
 							 st.executeUpdate("update testServerRequest set status='Approved' where dataID='"+request.getParameter("fileId")+"'");
 								
                         

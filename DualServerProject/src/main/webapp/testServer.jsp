@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Server1 Login | Page</title>
+        <title>Test Server Login | Page</title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -130,7 +130,7 @@
                 <br><center><form action="login.jsp" method="get"> 
                         <input type="text" class="inputs" name="name" required="" placeholder="Your Name" /><br> 
                         <input type="password" class="inputs" name="pass" required="" placeholder="Password" /><br> 
-                        <input type="hidden" value="3" name="status" />
+                        <input type="hidden" value="8" name="status" />
                         <input type="Submit" value="Login" class="button" >
                         <input type="reset" value="Reset" class="button" >
                     </form></center>

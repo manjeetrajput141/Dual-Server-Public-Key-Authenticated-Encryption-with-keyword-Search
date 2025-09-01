@@ -27,6 +27,25 @@
 		});
 	});
 </script>
+
+ <%
+        if (request.getParameter("approved") != null) {
+            %>
+            
+            
+            <script>alert('Request Not Sent');</script>
+            <%        
+        }
+        else if (request.getParameter("msg") != null) {
+        %>
+        
+        
+        <script>alert('Request Sent Successfully...');</script>
+        <%        
+        
+        
+        }
+        %>
 <!-- grid-slider -->
 <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="js/jquery.contentcarousel.js"></script>
@@ -64,9 +83,9 @@
 			<div class="h_menu4">
 				<!-- start h_menu4 -->
 				<a class="toggleMenu" href="#">Menu</a>
-				 <ul class="nav">
-                        <li class="active"><a href="receiverHome.jsp">Home</a></li>
-                        <li><a href="fileUpload.jsp">File Upload</a></li>
+				                    <ul class="nav">
+                        <li class="active"><a href="receiverHome.jsp">Data Receiver Home</a></li>
+                        <li><a href="receive.jsp">Download File</a></li>
                         <li><a href="allReceiverFile.jsp">My Files</a></li>
                         <li><a href="#">Keyword Index</a></li>
                         <li><a href="#">File Transaction</a></li>
@@ -79,7 +98,7 @@
 		</div>
 	</div>
 	<div class="main">
-	<form action="approve.jsp" method="get">
+	
 		<div class="container">
 			<!-- start content-top -->
 			<br>
@@ -100,8 +119,12 @@
 						<th
 							style="text-align: center; width: 200px; font-size: 16px; color: brown">Data Available for Receiver Name</th>
 						<th
-							style="text-align: center; width: 200px; font-size: 16px; color: brown">Data Uploading is Approved by Assistant server
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Status
 							</th>
+							<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Get Key For Download
+							</th>
+							
 							<th
 							style="text-align: center; width: 200px; font-size: 16px; color: brown">Remove File
 							</th>
@@ -117,27 +140,57 @@
 						try {
 							con = DbConnection.getConnection();
 							st = con.createStatement();
-							rs = st.executeQuery("select * from allfile where owner ='"+(String) session.getAttribute("sssname")+"'");
+							rs = st.executeQuery("select * from assistantserverfile where receiver ='"+(String) session.getAttribute("sssname")+"'");
 							while (rs.next()) {
 						%>
-						<form method="get" action="delete.jsp">
-						<input type="hidden" value=<%=rs.getString("fileId") %> name="owner" />
+						<form method="get" action="getKeyRequest.jsp">
+						<input type="hidden" value=<%=rs.getString("dataId") %> name="dataId" />
+						
 						<td  style="font-size: 16px"><%=rs.getString("fileId")%></td>
 						<td  style="font-size: 16px"><%=rs.getString("owner")%></td>
 						<td style="font-size: 16px"><%=rs.getString("receiver")%></td>
 						<td style="font-size: 16px"><%=rs.getString("filestatus")%></td>
+						<td style="font-size: 16px">
+						<% if(rs.getString("filestatus").startsWith("2")) 
+							{
+							%>
+						<button type="submit" 
+								class="primary">Get Key</button></td>
 						
+						<%}
+						else if(rs.getString("filestatus").startsWith("3")){
+							
+							
+							%>
+							Pending...</td>
+								
+							<%} 
+                            else if(rs.getString("filestatus").startsWith("4")){
+							
+							
+							%>
+							<a href="availableDataKey.jsp">Download Key</a></td>
+								
+							<%} 
+							
+						else{
+							
 						
-                        
+						%>
+						Request Submit to Assistant Server</td>
+							
+						<%}
+						  session.setAttribute("ssdataId", rs.getString("dataId"));
+						%>
 						
 
-						<td style="font-size: 16px"><button type="submit" 
-								class="primary">Delete File</button></td>
+						<td style="font-size: 16px"><a href="deleteDownloadKey.jsp">Delete</a></td>
 								</form>
 					</tr>
 					
 					<%
-					}
+							}
+					
 					} catch (Exception ex) {
 					ex.printStackTrace();
 					}
@@ -165,7 +218,7 @@
 			</div>
 
 		</div>
-		</form>
+		
 	</div>
 	<div class="copyright">
 		<div class="container">

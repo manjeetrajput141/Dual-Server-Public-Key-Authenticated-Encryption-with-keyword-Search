@@ -79,16 +79,15 @@ if (request.getParameter("msg") != null) {
 			<div class="h_menu4">
 				<!-- start h_menu4 -->
 				<a class="toggleMenu" href="#">Menu</a>
-				<ul class="nav">
-					<li class="active"><a href="receiverHome.jsp">Data
-							Receiver Home</a></li>
-					<li><a href="receive.jsp">Download File</a></li>
-					<li><a href="file_de.jsp">My Files</a></li>
-					<li><a href="#">Keyword Index</a></li>
-					<li><a href="#">File Transaction</a></li>
+				                    <ul class="nav">
+                        <li class="active"><a href="receiverHome.jsp">Data Receiver Home</a></li>
+                        <li><a href="receive.jsp">Download File</a></li>
+                        <li><a href="allReceiverFile.jsp">My Files</a></li>
+                        <li><a href="#">Keyword Index</a></li>
+                        <li><a href="#">File Transaction</a></li>
 
-					<li><a href="index.jsp">logout</a></li>
-				</ul>
+                        <li><a href="index.jsp">logout</a></li>
+                    </ul>
 				<script type="text/javascript" src="js/nav.js"></script>
 			</div>
 			<div class="clear"></div>

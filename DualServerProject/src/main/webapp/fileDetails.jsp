@@ -67,7 +67,7 @@
 				<ul class="nav">
 					<li><a href="assistantHome.jsp">Assistant Server</a></li>
 					<li><a href="fileDetails.jsp">File Details</a></li>
-					<li class="active"><a href="userDetail.jsp">User Details</a></li>
+					<li ><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="req1.jsp">User Request</a></li>
 					<li><a href="down1.jsp">Download Details</a></li>
 					<li><a href="index.jsp">logout</a></li>
@@ -78,16 +78,16 @@
 		</div>
 	</div>
 	<div class="main">
-	<form action="approve.jsp" method="get">
+	<form action="approveFile.jsp" method="get">
 		<div class="container">
 			<!-- start content-top -->
 			<br>
 			<br>
-			<center>
-				<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">User
+			 <center> 
+				<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">File
 					Details</h2>
 				<br>
-				<table border="2"
+				<table border="1"
 					style="text-align: center; margin-left: 0px; border-color: black">
 					<tr>
 						<th
@@ -114,8 +114,9 @@
 						try {
 							con = DbConnection.getConnection();
 							st = con.createStatement();
-							rs = st.executeQuery("select * from allfile");
+							rs = st.executeQuery("select * from assistantserverfile");
 							while (rs.next()) {
+								
 						%>
 						<form method="get" action="approveFile.jsp">
 						<td  style="font-size: 16px"><%=rs.getString("fileId")%></td>
@@ -124,6 +125,7 @@
 						<td style="font-size: 16px"><%=rs.getString("filestatus")%></td>
 						
 						<input type="hidden" name="fileId" value=<%=rs.getString("fileId")%>></input>
+						<input type="hidden" name="dataId" value=<%=rs.getString("dataId")%>></input>
                         
 						
 
@@ -139,6 +141,7 @@
 					}
 					%>
 				</table>
+				<!-- <br>
 				<br>
 				<br>
 				<br>
@@ -149,8 +152,7 @@
 				<br>
 				<br>
 				<br>
-				<br>
-				<br>
+				<br> -->
 
 				<!-- end content-top -->
 		</div>

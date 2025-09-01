@@ -64,13 +64,13 @@
             <div class="container">
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
-                    <ul class="nav">
-                        <li class="active"><a href="receiverHome">Data Receiver Home</a></li>
+                     <ul class="nav">
+                        <li class="active"><a href="receiverHome.jsp">Data Receiver Home</a></li>
                         <li><a href="receive.jsp">Download File</a></li>
-                        <li><a href="file_de.jsp">Send File</a></li>
-                        <li><a href="receive.jsp">Receive file</a></li>
-                        <li><a href="search.jsp">Search file</a></li>
-                        <li><a href="down.jsp">MyFile </a></li>
+                        <li><a href="allReceiverFile.jsp">My Files</a></li>
+                        <li><a href="#">Keyword Index</a></li>
+                        <li><a href="#">File Transaction</a></li>
+
                         <li><a href="index.jsp">logout</a></li>
                     </ul>
                     <script type="text/javascript" src="js/nav.js"></script>
@@ -84,11 +84,11 @@
                 <center><br><br>
                     <img src="images/file_share1.jpg"  height="400" width="900">
                 </center>
-
-				<center>
+				<div class="text-center">
+				<!-- <center> -->
 				<form action="Download" method="get" enctype="multipart/form-data">
 
-					<select class="inputss" name="receiver">
+					<%-- <select class="inputss" name="receiver">
 						<%
 						System.out.println("hi");
 						String user = (String) session.getAttribute("sssname");
@@ -111,10 +111,10 @@
 						ex.printStackTrace();
 						}
 						%>
-					</select><br> 
+					</select> --%><br> 
 					<input type="text" class="inputs" name="keyword"
-						required="" placeholder="Enter File Keyword" /><br>
-					<%
+						required=true placeholder="Enter File Keyword" /><br>
+					<%-- <%
 					Random RANDOM = new SecureRandom();
 					int PASSWORD_LENGTH = 25;
 					String letters = "qwertyuioplkjhgfdsazxcvbnm123456789ASDFGHJKLZXCVBNMQWERTYUIOP";
@@ -123,22 +123,17 @@
 						int index = (int) (RANDOM.nextDouble() * letters.length());
 						key += letters.substring(index, index + 1);
 					}
-					%>
+					%> --%>
 					
-					<!-- Just For Checking -->
-					 <input type="text" class="inputs" name="buplic" readonly=""
-						Value="<%=key%>" />
-						
-						
-						<!-- <input type="text" class="inputs"
-						name="myfile" required="" value="myfile" /> -->
+					
 						<br> 
 					
 						<br>
 				    <input type="Submit"
 						value="Download" class="button">
 				</form>
-			</center>
+				</div>
+			<!-- </center> -->
                 <!-- end content-top -->
             </div>
             <div class="container">

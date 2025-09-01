@@ -13,7 +13,8 @@
 							con = DbConnection.getConnection();
 							st = con.createStatement();
 							 int i=st.executeUpdate("update cloudData set testServerApproval='"+1+"' where dataID='"+request.getParameter("fileId")+"'");
-							 st.executeUpdate("update testServerRequest set status='Approved' where dataID='"+request.getParameter("fileId")+"'");
+							 st.executeUpdate("update testServerRequest set status='request Approved' where dataID='"+request.getParameter("fileId")+"'");
+							 st.executeUpdate("update testserverfile set status='1 Approved for download' where dataID='"+request.getParameter("fileId")+"'");
 								
                         
 						

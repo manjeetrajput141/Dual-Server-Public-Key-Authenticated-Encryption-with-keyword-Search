@@ -1,7 +1,9 @@
 package com.algorithm;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -27,7 +29,7 @@ public class Download extends HttpServlet {
     	System.out.println("Inside Process");
     	
     	String key=(String)request.getParameter("keyword");
-    	String fileData = request.getParameter("fileData");
+    	String receiverName = request.getParameter("receiver");
     	System.out.println("Key is "+key);
     	
     	
@@ -36,7 +38,8 @@ public class Download extends HttpServlet {
     	try {
     	  
           
-          String documentInfo = SearchableEncryption.searchDocument(key);
+          String documentInfo = SearchableEncryption.searchDocumentByKey(key);
+          
           request.setAttribute("data", documentInfo);
           System.out.println("Data  is "+documentInfo);
           
@@ -49,6 +52,39 @@ public class Download extends HttpServlet {
 			e.printStackTrace();
 			response.sendRedirect("receiverHome.jsp?dataUpload=notupload");
 		}
+//    	try {
+//    	    // Example: assume searchDocument() returns the file path
+//    	    String filePath = SearchableEncryption.searchDocumentByKey(key); 
+//    	    File file = new File(filePath);
+//
+//    	    if (!file.exists()) {
+//    	        response.sendRedirect("receiverHome.jsp?dataUpload=notfound");
+//    	        return;
+//    	    }
+//
+//    	    // Set response headers
+//    	    response.setContentType("application/octet-stream"); 
+//    	    response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
+//    	    response.setContentLengthLong(file.length());
+//
+//    	    // Write file to response
+//    	    FileInputStream in = new FileInputStream(file);
+//    	    OutputStream out = response.getOutputStream();
+//
+//    	    byte[] buffer = new byte[4096];
+//    	    int bytesRead;
+//    	    while ((bytesRead = in.read(buffer)) != -1) {
+//    	        out.write(buffer, 0, bytesRead);
+//    	    }
+//
+//    	    in.close();
+//    	    out.close();
+//
+//    	} catch (Exception e) {
+//    	    e.printStackTrace();
+//    	    response.sendRedirect("receiverHome.jsp?dataUpload=error");
+//    	}
+
     	
     	
       

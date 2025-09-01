@@ -130,7 +130,7 @@
                 <br><center><form action="login.jsp" method="get"> 
                         <input type="text" class="inputs" name="name" required="" placeholder="Your Name" /><br> 
                         <input type="password" class="inputs" name="pass" required="" placeholder="Password" /><br> 
-                        <input type="hidden" value="3" name="status" />
+                        <input type="hidden" value="4" name="status" />
                         <input type="Submit" value="Login" class="button" >
                         <input type="reset" value="Reset" class="button" >
                     </form></center>

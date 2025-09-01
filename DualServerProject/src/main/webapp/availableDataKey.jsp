@@ -64,127 +64,118 @@
 			<div class="h_menu4">
 				<!-- start h_menu4 -->
 				<a class="toggleMenu" href="#">Menu</a>
-				<ul class="nav">
-					<li class="active"><a href="testHome.jsp">Test Server</a></li>
-					<li><a href="allTestServerRequest.jsp">All File Request</a></li>
-					<li><a href="userDetail.jsp">User Details</a></li>
-					<li><a href="#">User Request</a></li>
-					<li><a href="#">Download Details</a></li>
-					<li><a href="index.jsp">logout</a></li>
-				</ul>
+				                    <ul class="nav">
+                        <li class="active"><a href="receiverHome.jsp">Data Receiver Home</a></li>
+                        <li><a href="receive.jsp">Download File</a></li>
+                        <li><a href="allReceiverFile.jsp">My Files</a></li>
+                        <li><a href="#">Keyword Index</a></li>
+                        <li><a href="#">File Transaction</a></li>
+
+                        <li><a href="index.jsp">logout</a></li>
+                    </ul>
 				<script type="text/javascript" src="js/nav.js"></script>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
 	<div class="main">
-		
-			<div class="container">
-				<!-- start content-top -->
-				<br> <br>
-				<center>
-					<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">User
-						Details</h2>
-					<br>
-					<table border="2"
-						style="text-align: center; margin-left: 0px; border-color: black">
-						<tr>
+	
+		<div class="container">
+			<!-- start content-top -->
+			<br>
+			<br>
+			<center>
+				<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">User
+					Details</h2>
+				<br>
+				<table border="2"
+					style="text-align: center; margin-left: 0px; border-color: black">
+					<tr>
+					<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Receive Id
+							</th>
 							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Data
-								Id</th>
-
-							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Request
-								By</th>
-
-							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Actual
-								Receiver</th>
-
-							<th
-								style="text-align: center; width: 400px; font-size: 16px; color: brown">Owner
-								Name</th>
-							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Status
-								</th>
-							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Request Time</th>
-							<th
-								style="text-align: center; width: 200px; font-size: 16px; color: brown">Approve/Reject</th>
-
-						</tr>
-						<tr>
-
-							<%
-							Connection con = null;
-							Statement st = null;
-							ResultSet rs = null;
-							try {
-								con = DbConnection.getConnection();
-								st = con.createStatement();
-								rs = st.executeQuery("select * from testServerRequest");
-								while (rs.next()) {
-							%>
-							<form method="get" action="sendKey.jsp">
-								<td style="font-size: 16px"><%=rs.getString("dataID")%></td>
-
-								<td style="font-size: 16px"><%=rs.getString("requestReceiver")%></td>
-								<td style="font-size: 16px"><%=rs.getString("actualreceiver")%></td>
-								<td style="font-size: 16px"><%=rs.getString("ownerName")%></td>
-								<td style="font-size: 16px"><%=rs.getString("fileStatus")%></td>
-								<td style="font-size: 16px"><%=rs.getString(5)%></td>
-
-								<input type="hidden" name="dataId"
-									value=<%=rs.getString("dataID")%>></input>
-								<td style="font-size: 16px">
-								<%
-                             if(rs.getString("filestatus").startsWith("4")){
-							
-							
-							%>
-							Key Sent to Receiver</td>
-								
-							<%} 
-							
-						else{
-							
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Data Id
+							</th>
+						<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Data Owner
+							</th>
+						<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Data Available for Receiver Name</th>
 						
-						%>
-						<button type="submit"
-										class="primary">Approve</button></td>
+							<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Download Key
+							</th>
 							
-						<%} %>
-
-							
-							</form>
-						</tr>
-
+							<th
+							style="text-align: center; width: 200px; font-size: 16px; color: brown">Remove File
+							</th>
+						
+	
+					</tr>
+					<tr>
+					
 						<%
-						}
-						} catch (Exception ex) {
-						ex.printStackTrace();
-						}
+						Connection con = null;
+						Statement st = null;
+						ResultSet rs = null;
+						try {
+							con = DbConnection.getConnection();
+							st = con.createStatement();
+							rs = st.executeQuery("select * from receiverdata where receiverName ='"+(String) session.getAttribute("sssname")+"'");
+							while (rs.next()) {
 						%>
-					</table>
-					<br> <br> <br> <br> <br> <br> <br>
-					<br> <br> <br> <br> <br>
+						<form method="get" action="#">
+						<input type="hidden" value=<%=rs.getString("dataId") %> name="dataId" />
+						<td  style="font-size: 16px"><%=rs.getString("RID")%></td>
+						<td  style="font-size: 16px"><%=rs.getString("dataId")%></td>
+						<td  style="font-size: 16px"><%=rs.getString("ownerName")%></td>
+						<td style="font-size: 16px"><%=rs.getString("receiverName")%></td>
+						
+						<td style="font-size: 16px"><%=rs.getString(5) %></td>
+						
 
-					<!-- end content-top -->
+						<td style="font-size: 16px"><button  
+								class="primary">Delete File</button></td>
+								</form>
+					</tr>
+					
+					<%
+					}
+					} catch (Exception ex) {
+					ex.printStackTrace();
+					}
+					%>
+				</table>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<!-- end content-top -->
+		</div>
+		<div class="container">
+		
+			<div class="row content_middle_bottom">
+				<div class="clear"></div>
 			</div>
-			<div class="container">
 
-				<div class="row content_middle_bottom">
-					<div class="clear"></div>
-				</div>
-
-			</div>
+		</div>
 		
 	</div>
 	<div class="copyright">
 		<div class="container">
 			<div class="copy">
 				<p>
-					© 2025 All right received <a href="#" target="_blank">/a> 
+					© 2025 All right received <a href="#" target="_blank">/a>
 				</p>
 			</div>
 			<div class="social">

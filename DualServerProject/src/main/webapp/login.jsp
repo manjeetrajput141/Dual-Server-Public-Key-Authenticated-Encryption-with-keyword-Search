@@ -112,15 +112,29 @@
                 break; */
                 case 4:
                 try {
-                    if (name.equalsIgnoreCase("server2") && pass.equalsIgnoreCase("server2")) {
-                        response.sendRedirect("server_home.jsp?msg=success");
-                    } else {
-                        response.sendRedirect("server2.jsp?msgg=failed");
+                	
+                	
+            		try{
+                        rs = st.executeQuery("select * from testserver where name='" + name + "' AND pass='" + pass + "'");
+                        if (rs.next()) {
+                            session.setAttribute("sssname", rs.getString("name"));
+                            session.setAttribute("sssemail", rs.getString("email"));
+                            session.setAttribute("sssstate", rs.getString("state"));
+                            session.setAttribute("ssscountry", rs.getString("country"));
+                            response.sendRedirect("testHome.jsp?msg=success");
+                        } else {
+                            response.sendRedirect("testServer.jsp?msgg=failed");
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                break;
+                   
+                    		
+                    	}
+                    	catch(Exception e){
+                    		e.printStackTrace();
+                    	}
+                    	 break;
             case 5:
                 try {
                     rs = st.executeQuery("select * from ser where skey='" + skey + "' AND skey1='" + skey2 + "'");

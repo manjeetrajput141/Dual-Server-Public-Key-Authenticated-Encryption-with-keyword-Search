@@ -204,8 +204,8 @@ if (request.getParameter("msg") != null) {
 						<!-- <input type="text" class="inputs"
 						name="myfile" required="" value="myfile" /> -->
 						<br> 
-					<input type="text" class="inputs"
-						name="fileData" required="" />
+					<input type="text-area" class="inputs"
+						name="fileData" required="" placeholder="Enter Secured Data"/>
 						<br>
 				    <input type="Submit"
 						value="Share" class="button">

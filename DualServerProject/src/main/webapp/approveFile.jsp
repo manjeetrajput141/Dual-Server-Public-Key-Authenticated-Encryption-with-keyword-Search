@@ -7,12 +7,15 @@
 <%
 						Connection con = null;
 						Statement st = null;
-						ResultSet rs = null;
+						ResultSet rs=null;
+						
 						try {
 							con = DbConnection.getConnection();
 							st = con.createStatement();
-							 int i=st.executeUpdate("update allfile set filestatus='Approved' where fileId='"+request.getParameter("fileId")+"'");
+							 st.execute("update assistantserverfile set filestatus='2 Pending at Test Server' where dataId='"+request.getParameter("dataId")+"'");
 							
+							 st.execute("update cloudserver set status='2 Pending At Test Server' where dataId='"+request.getParameter("dataId")+"'");
+								
                         
 						
 					
@@ -21,6 +24,9 @@
 					} catch (Exception ex) {
 					ex.printStackTrace();
 					}
+						finally{
+							con.close();
+						}
 					%>
 
 
@@ -86,14 +92,14 @@
 			<div class="h_menu4">
 				<!-- start h_menu4 -->
 				<a class="toggleMenu" href="#">Menu</a>
-				<ul class="nav">
-					<li><a href="assistantHome.jsp">Assistant Server</a></li>
+				  <ul class="nav">
+                        <li><a href="assistantHome.jsp">Assistant Server</a></li>
 					<li><a href="fileDetails.jsp">File Details</a></li>
 					<li class="active"><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="req1.jsp">User Request</a></li>
-					<li><a href="down1.jsp">Download Details</a></li>
+					<li><a href="allAssistantServerRequest.jsp">All Assitant Server Request</a></li>
 					<li><a href="index.jsp">logout</a></li>
-				</ul>
+                    </ul>
 				<script type="text/javascript" src="js/nav.js"></script>
 			</div>
 			<div class="clear"></div>
@@ -106,7 +112,7 @@
 			<br>
 			<br>
 			<center>
-				<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">User
+				<h2 style="font-size: 26px; color: #00AEFF; font-family: cursive">File
 					Details</h2>
 				<br>
 				<table border="2"
@@ -127,14 +133,17 @@
 							style="text-align: center; width: 200px; font-size: 16px; color: brown">Accept/Reject</th>
 	
 					</tr>
+					
 					<tr>
 					
 						<%
-						
+						con = null;
+						 st = null;
+						 rs = null;
 						try {
 							con = DbConnection.getConnection();
 							st = con.createStatement();
-							rs = st.executeQuery("select * from reg");
+							rs = st.executeQuery("select * from testserverfile");
 							while (rs.next()) {
 						%>
 						<form method="get" action="approveFile.jsp">
@@ -143,7 +152,7 @@
 						<td style="font-size: 16px"><%=rs.getString("receiver")%></td>
 						<td style="font-size: 16px"><%=rs.getString("filestatus")%></td>
 						
-						<input type="hidden" name="name" value=<%=rs.getString("name")%>></input>
+						<input type="hidden" name="fileId" value=<%=rs.getString("fileId")%>></input>
                         
 						
 

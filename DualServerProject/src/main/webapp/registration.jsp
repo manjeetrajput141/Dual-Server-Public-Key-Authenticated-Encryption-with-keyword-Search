@@ -142,7 +142,9 @@
         <div class="main">
             <div class="container">
                 <!-- start content-top -->
-                <br><br><br><center><h2 style="font-size: 26px; color: #552200; font-family: cursive">Registration</h2>
+                <br><br><br><!-- <center> -->
+                <div class="text-center">
+                <h2 style="font-size: 26px; color: #552200; font-family: cursive">Registration</h2>
                     <br><form action="login.jsp" method="get" name="form"> 
                          <select class="inputss" required="" name="role" >
                             <option value="select">Role</option>
@@ -166,7 +168,10 @@
                         <input type="hidden" value="2" name="status" />
                         <input type="Submit" value="Register" class="button" onclick="phonenumber(document.form.phone)">
                         <input type="reset" value="Reset" class="button" >
-                    </form></center>
+                    </form>
+                    </div>
+                    
+                   <!--  </center> -->
 
 
                 <!-- end content-top -->

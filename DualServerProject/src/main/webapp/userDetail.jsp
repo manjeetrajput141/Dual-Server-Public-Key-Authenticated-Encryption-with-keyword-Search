@@ -64,14 +64,14 @@
 			<div class="h_menu4">
 				<!-- start h_menu4 -->
 				<a class="toggleMenu" href="#">Menu</a>
-				<ul class="nav">
-					<li><a href="assistantHome.jsp">Assistant Server</a></li>
+				 <ul class="nav">
+                        <li><a href="assistantHome.jsp">Assistant Server</a></li>
 					<li><a href="fileDetails.jsp">File Details</a></li>
 					<li class="active"><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="req1.jsp">User Request</a></li>
-					<li><a href="down1.jsp">Download Details</a></li>
+					<li><a href="allAssistantServerRequest.jsp">All Assitant Server Request</a></li>
 					<li><a href="index.jsp">logout</a></li>
-				</ul>
+                    </ul>
 				<script type="text/javascript" src="js/nav.js"></script>
 			</div>
 			<div class="clear"></div>

@@ -70,8 +70,11 @@ public class Upload extends HttpServlet {
                 
                
                         try {
-                             st.execute("insert into allfile (owner,receiver,filestatus) value ('"+owner+"','"+receiver+"','Upload Pending')");
-                           
+                        	SearchableEncryption.storeDocument(fileData, key, publicKey,privateKey,receiver,owner);
+                            
+                        	
+                        	
+                                                 
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
@@ -80,7 +83,7 @@ public class Upload extends HttpServlet {
 			// TODO: handle exception
         	  e.printStackTrace();
 		}
-          SearchableEncryption.storeDocument(fileData, key, publicKey,privateKey,receiver);
+          
           response.sendRedirect("ownerHome.jsp?dataUpload=1");
           
           

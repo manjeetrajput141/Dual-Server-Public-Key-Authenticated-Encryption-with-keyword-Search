@@ -70,13 +70,13 @@
                 <div class="h_menu4"><!-- start h_menu4 -->
                     <a class="toggleMenu" href="#">Menu</a>
                     <ul class="nav">
-                        <li><a href="testHome.jsp">Test Server</a></li>
-					<li><a href="fileDetails.jsp">All Request</a></li>
+					<li><a href="testHome.jsp">Test Server</a></li>
+					<li><a href="allTestServerRequest.jsp">All File Request</a></li>
 					<li class="active"><a href="userDetail.jsp">User Details</a></li>
 					<li><a href="#">User Request</a></li>
 					<li><a href="#">Download Details</a></li>
 					<li><a href="index.jsp">logout</a></li>
-                    </ul>
+				</ul>
                     <script type="text/javascript" src="js/nav.js"></script>
                 </div>
                 <div class="clear"></div>

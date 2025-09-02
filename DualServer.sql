@@ -5,11 +5,11 @@ show tables;
 create table reg(name varchar(50), pass varchar(20), email varchar(30), dob varchar(50), gen varchar(50), phone varchar(20), state varchar(20), country VARCHAR(20));
 select * from reg;
 create table assistantServer(name varchar(50), pass varchar(20), email varchar(30), dob varchar(50), gen varchar(50), phone varchar(20), state varchar(20), country VARCHAR(20));
-insert into assistantServer value ("manjeet","manjeet123","manjeetrajput5555@gmail.com","09082000","male","9891226378","UP","india");
+insert into assistantServer value ("manjeet","********","manjeetrajput5555@gmail.com","09082000","male","9891226378","UP","india");
 
 create table testServer(name varchar(50), pass varchar(20), email varchar(30), dob varchar(50), gen varchar(50), phone varchar(20), state varchar(20), country VARCHAR(20));
 
-insert into testServer value ("test","test123","test@gmail.com","01012000","male","9876543211","UP","india");
+insert into testServer value ("test","*******","test@gmail.com","01012000","male","9876543211","UP","india");
 
 #Creating Cloud Server DB
 CREATE TABLE `cloudserver` (
